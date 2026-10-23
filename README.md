@@ -8,17 +8,21 @@ rules (criterion + operator + threshold) — never by an LLM.
 
 ```
 backend/   FastAPI + SQLAlchemy + SQLite
-  app/       main.py (entrypoint), models.py, seed.py, database.py, config.py
+  app/       main.py (entrypoint), models.py, engine.py (rules engine),
+             routers.py (API), seed.py, database.py, config.py, schemas.py
   seed/      schemes.json (10 real schemes, all verified=false with TODOs)
-  tests/     pytest smoke tests
+  tests/     pytest tests (engine + endpoints)
 frontend/  React + TypeScript + Vite + Tailwind CSS
-  src/i18n/  en.json / hi.json translation files
+  src/
+    api/       client.ts (typed fetch + friendly error codes)
+    components/ Wizard, Results, SchemeCard, LanguagePicker
+    i18n/      en.json / hi.json translation files
 ```
 
 ### Database (PROPOSAL.md section 9)
 
 - `schemes` — name, category, state/region, benefits, eligibility summary,
-  application steps, official URL, last_verified, verified flag.
+  application steps, target groups, official URL, last_verified, verified flag.
 - `eligibility_rules` — criterion, operator, threshold, PASS/FAIL
   explanations per rule.
 - `required_documents` — document name + instructions per scheme.
@@ -45,6 +49,32 @@ uvicorn app.main:app --reload
 - API docs: http://localhost:8000/docs
 - Health check: http://localhost:8000/health
 - SQLite file `jansahayak.db` is created automatically.
+- If `python` resolves to a non-Windows Python (e.g. MSYS2), create the
+  venv with the Windows launcher instead: `py -3.14 -m venv .venv`.
+
+### Environment variables (backend, `.env`)
+
+| Variable      | Purpose                                             |
+| ------------- | --------------------------------------------------- |
+| `GROQ_API_KEY`| Groq key for the AI assistant; empty = assistant off |
+| `DATABASE_URL`| SQLAlchemy URL; defaults to `sqlite:///./jansahayak.db` |
+
+### API endpoints
+
+| Endpoint                                    | Purpose                                                    |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| `GET /health`                               | status, scheme count, `groq_configured`                    |
+| `POST /profile`                             | store a minimal profile, returns `profile_id`              |
+| `POST /match`                               | run the rules engine for every scheme                      |
+| `GET /schemes/{id}`                         | full record: rules, documents, sources, steps              |
+| `GET /action-plan/{profile_id}`             | priority schemes, common documents, uncertain schemes      |
+| `GET /schemes/{id}/details?profile_id=`     | details page data: per-user criteria, deadline, status     |
+| `PUT /applications/{profile_id}/{scheme_id}`| set SELF-REPORTED status (NOT_APPLIED..REJECTED)           |
+| `GET /applications/{profile_id}?status=`    | list rows; `applied` / `not_applied` / exact status        |
+
+Application statuses are what the user tells us — the app never checks
+government systems. Scheme records with `verified: false` carry an
+"unverified data" flag; no eligibility decision is ever made by an LLM.
 
 ## Frontend setup
 
@@ -60,8 +90,20 @@ npm run dev                   # http://localhost:5173
 ```powershell
 cd backend
 .venv\Scripts\activate
-pytest
+pytest -v
 ```
+
+Frontend build (type-check + production bundle):
+
+```powershell
+cd frontend
+npm run build
+```
+
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for Vercel (frontend), a backend host,
+and the SQLite → PostgreSQL/Supabase switch.
 
 ## Hard rules baked into the design
 
@@ -80,6 +122,9 @@ pytest
 
 ## Status
 
-Stage 1: scaffold, DB models, seed loader. Later stages add the
-eligibility engine, profile wizard, document checklist, what-if simulator,
-and the RAG assistant.
+Working prototype (no backend for the AI assistant yet — that is the RAG
+stage): scaffold + DB models, deterministic eligibility engine with income
+bands and INFO_REQUIRED handling, profile wizard, results dashboard with
+per-criterion explanations, target-group filter, stale-data flags, friendly
+error handling, Hindi + English. Still basic: document checklist, what-if
+simulator, and the RAG assistant.

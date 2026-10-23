@@ -1,5 +1,5 @@
 // Minimal i18n: language state + JSON translation files (en / hi).
-// The full language picker UI lands in Stage 3; this proves the wiring works.
+// t() supports {placeholder} interpolation, e.g. t("wizardStep", { x: 1, y: 5 }).
 
 import {
   createContext,
@@ -18,7 +18,7 @@ const dictionaries: Record<Lang, Record<string, string>> = { en, hi };
 interface LanguageContextValue {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -36,8 +36,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [lang]);
 
   // Fall back to English when a key is missing in the active dictionary.
-  const t = (key: string) =>
-    dictionaries[lang][key] ?? dictionaries.en[key] ?? key;
+  const t = (key: string, params?: Record<string, string | number>) => {
+    const template = dictionaries[lang][key] ?? dictionaries.en[key] ?? key;
+    if (!params) return template;
+    return template.replace(/\{(\w+)\}/g, (match, name: string) =>
+      name in params ? String(params[name]) : match,
+    );
+  };
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>

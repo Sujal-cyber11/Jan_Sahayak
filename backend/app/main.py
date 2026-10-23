@@ -5,8 +5,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config import settings
 from app.database import SessionLocal
 from app.models import Scheme
+from app.routers import router
 from app.seed import init_db
 
 
@@ -17,6 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="JanSahayak AI API", lifespan=lifespan)
+app.include_router(router)
 
 # Dev-only CORS: the Vite dev server on localhost:5173.
 app.add_middleware(
@@ -32,4 +35,10 @@ def health() -> dict:
     """Basic health check used by the frontend to test connectivity."""
     with SessionLocal() as db:
         count = db.query(Scheme).count()
-    return {"status": "ok", "schemes": count}
+    return {
+        "status": "ok",
+        "schemes": count,
+        # Frontend uses this to show a friendly note when the AI
+        # assistant is not configured yet.
+        "groq_configured": bool(settings.groq_api_key),
+    }

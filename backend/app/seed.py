@@ -41,6 +41,7 @@ def load_schemes() -> int:
                 category_en=item["category_en"],
                 category_hi=item["category_hi"],
                 state=item.get("state", "All India"),
+                target_groups=",".join(item.get("target_groups", [])),
                 ministry=item["ministry"],
                 official_url=item["official_url"],
                 application_steps_en=json.dumps(
@@ -52,6 +53,10 @@ def load_schemes() -> int:
                 last_verified=item["last_verified"],
                 verified=item.get("verified", False),
                 todo_note=item.get("todo"),
+                age_limit_text=item.get("age_limit_text"),
+                income_limit_text=item.get("income_limit_text"),
+                application_deadline=item.get("application_deadline"),
+                deadline_note=item.get("deadline_note"),
             )
             for rule in item.get("rules", []):
                 scheme.rules.append(
@@ -74,6 +79,10 @@ def load_schemes() -> int:
                         name_hi=doc["name_hi"],
                         instructions_en=doc["instructions_en"],
                         instructions_hi=doc["instructions_hi"],
+                        mandatory=doc.get("mandatory", True),
+                        where_to_get=doc.get("where_to_get"),
+                        typical_effort=doc.get("typical_effort"),
+                        todo_note=doc.get("todo"),
                         sort_order=i,
                     )
                 )

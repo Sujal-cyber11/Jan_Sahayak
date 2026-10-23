@@ -32,24 +32,42 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Self-attested copy for e-KYC.",
-          "instructions_hi": "ई-केवाईसी हेतु स्व-प्रमाणित प्रति।"
+          "instructions_hi": "ई-केवाईसी हेतु स्व-प्रमाणित प्रति।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "Bank passbook / account details",
           "name_hi": "बैंक पासबुक / खाता विवरण",
           "instructions_en": "Account must be in the beneficiary's name and linked to Aadhaar.",
-          "instructions_hi": "खाता लाभार्थी के नाम और आधार से जुड़ा होना चाहिए।"
+          "instructions_hi": "खाता लाभार्थी के नाम और आधार से जुड़ा होना चाहिए।",
+          "mandatory": true,
+          "where_to_get": "Your bank branch",
+          "typical_effort": "same day"
         },
         {
           "name_en": "Land ownership records",
           "name_hi": "भूमि स्वामित्व अभिलेख",
           "instructions_en": "Khasra/khatauni or equivalent revenue record.",
-          "instructions_hi": "खसरा/खतौनी या समकक्ष राजस्व अभिलेख।"
+          "instructions_hi": "खसरा/खतौनी या समकक्ष राजस्व अभिलेख।",
+          "mandatory": true,
+          "where_to_get": "State land records portal (e.g. Bhulekh)",
+          "todo": "TODO: verify which land record is accepted per state."
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://pmkisan.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://pmkisan.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -85,7 +103,15 @@
           "fail_explanation_en": "Families where any member pays income tax are excluded from PM-KISAN.",
           "fail_explanation_hi": "जिन परिवारों का कोई सदस्य आयकर भरता है, वे पीएम-किसान से बाहर हैं।"
         }
-      ]
+      ],
+      "target_groups": [
+        "farmer",
+        "rural"
+      ],
+      "age_limit_text": "No age limit.",
+      "income_limit_text": "No upper income limit, but no family member should pay income tax.",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "pmay-gramin",
@@ -118,24 +144,42 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Self-attested copy for beneficiary identification.",
-          "instructions_hi": "लाभार्थी पहचान हेतु स्व-प्रमाणित प्रति।"
+          "instructions_hi": "लाभार्थी पहचान हेतु स्व-प्रमाणित प्रति।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "MGNREGA job card / SECC beneficiary reference",
           "name_hi": "मनरेगा जॉब कार्ड / एसईसीसी लाभार्थी संदर्भ",
           "instructions_en": "Used to confirm the household's inclusion in the target list.",
-          "instructions_hi": "परिवार की लक्ष्य सूची में शामिलता की पुष्टि हेतु।"
+          "instructions_hi": "परिवार की लक्ष्य सूची में शामिलता की पुष्टि हेतु।",
+          "mandatory": true,
+          "where_to_get": "Gram Panchayat",
+          "todo": "TODO: verify whether the job card or the SECC list reference is required."
         },
         {
           "name_en": "Bank passbook",
           "name_hi": "बैंक पासबुक",
           "instructions_en": "Account for direct benefit transfer of instalments.",
-          "instructions_hi": "किस्तों के सीधे हस्तांतरण हेतु खाता।"
+          "instructions_hi": "किस्तों के सीधे हस्तांतरण हेतु खाता।",
+          "mandatory": true,
+          "where_to_get": "Your bank branch",
+          "typical_effort": "same day"
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://pmayg.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://pmayg.nic.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -171,7 +215,15 @@
           "fail_explanation_en": "Families that already received a PMAY house are not eligible again.",
           "fail_explanation_hi": "जिन परिवारों को पहले पीएमएवाई मकान मिल चुका है, वे दोबारा पात्र नहीं हैं।"
         }
-      ]
+      ],
+      "target_groups": [
+        "rural",
+        "EWS"
+      ],
+      "age_limit_text": "No age limit for the head of household.",
+      "income_limit_text": "Annual family income up to Rs 3 lakh (EWS / LIG rural households).",
+      "application_deadline": null,
+      "deadline_note": "State windows apply — check the state rural housing portal."
     },
     {
       "slug": "pmay-urban",
@@ -204,24 +256,42 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Self-attested copy for identity verification.",
-          "instructions_hi": "पहचान सत्यापन हेतु स्व-प्रमाणित प्रति।"
+          "instructions_hi": "पहचान सत्यापन हेतु स्व-प्रमाणित प्रति।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "Income certificate",
           "name_hi": "आय प्रमाण पत्र",
           "instructions_en": "Issued by a competent authority to prove the category income cap.",
-          "instructions_hi": "श्रेणी आय सीमा सिद्ध करने हेतु सक्षम प्राधिकारी द्वारा जारी।"
+          "instructions_hi": "श्रेणी आय सीमा सिद्ध करने हेतु सक्षम प्राधिकारी द्वारा जारी।",
+          "mandatory": true,
+          "where_to_get": "Tehsil / District administration or state e-District portal",
+          "todo": "TODO: verify the issuing authority in your state."
         },
         {
           "name_en": "Affidavit of not owning a pucca house",
           "name_hi": "पक्का मकान न होने का शपथ पत्र",
           "instructions_en": "Declares the family owns no pucca house anywhere in India.",
-          "instructions_hi": "घोषणा कि परिवार के नाम भारत में कहीं पक्का मकान नहीं है।"
+          "instructions_hi": "घोषणा कि परिवार के नाम भारत में कहीं पक्का मकान नहीं है।",
+          "mandatory": true,
+          "where_to_get": "Notary public",
+          "typical_effort": "same day"
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://pmay-urban.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://pmay-urban.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -257,7 +327,14 @@
           "fail_explanation_en": "Families that own a pucca house are not eligible under PMAY-U.",
           "fail_explanation_hi": "जिन परिवारों के नाम पक्का मकान है, वे पीएमएवाई-यू के अंतर्गत पात्र नहीं हैं।"
         }
-      ]
+      ],
+      "target_groups": [
+        "EWS"
+      ],
+      "age_limit_text": "No age limit for the applicant.",
+      "income_limit_text": "Annual family income up to Rs 6 lakh (EWS and LIG urban households).",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "ab-pmjay",
@@ -290,18 +367,33 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Used for beneficiary identification and e-card generation.",
-          "instructions_hi": "लाभार्थी पहचान व ई-कार्ड निर्माण हेतु।"
+          "instructions_hi": "लाभार्थी पहचान व ई-कार्ड निर्माण हेतु।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "Ration card / SECC reference",
           "name_hi": "राशन कार्ड / एसईसीसी संदर्भ",
           "instructions_en": "Helps confirm household inclusion in the beneficiary list.",
-          "instructions_hi": "लाभार्थी सूची में परिवार की शामिलता की पुष्टि हेतु।"
+          "instructions_hi": "लाभार्थी सूची में परिवार की शामिलता की पुष्टि हेतु।",
+          "mandatory": false,
+          "where_to_get": "State food & civil supplies department",
+          "todo": "TODO: verify whether this supporting document is required."
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://pmjay.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "National Portal of India", "url": "https://www.india.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://pmjay.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "National Portal of India",
+          "url": "https://www.india.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -315,7 +407,14 @@
           "fail_explanation_en": "PM-JAY targets families identified via SECC 2011 deprivation criteria or state lists.",
           "fail_explanation_hi": "पीएम-जेएवाई एसईसीसी 2011 वंचितता मानदंड या राज्य सूचियों से चिह्नित परिवारों के लिए है।"
         }
-      ]
+      ],
+      "target_groups": [
+        "EWS"
+      ],
+      "age_limit_text": "No age limit; covers the whole family.",
+      "income_limit_text": "No income limit — eligibility follows SECC deprivation criteria.",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "pmmvy",
@@ -348,24 +447,41 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Mother's Aadhaar for identification and DBT.",
-          "instructions_hi": "पहचान व डीबीटी हेतु माता का आधार।"
+          "instructions_hi": "पहचान व डीबीटी हेतु माता का आधार।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "MCP card / ANC registration",
           "name_hi": "एमसीपी कार्ड / एएनसी पंजीकरण",
           "instructions_en": "Mother & Child Protection card from Anganwadi/health facility.",
-          "instructions_hi": "आंगनवाड़ी/स्वास्थ्य केंद्र से मातृ-शिशु सुरक्षा कार्ड।"
+          "instructions_hi": "आंगनवाड़ी/स्वास्थ्य केंद्र से मातृ-शिशु सुरक्षा कार्ड।",
+          "mandatory": true,
+          "where_to_get": "Anganwadi centre / health facility"
         },
         {
           "name_en": "Bank passbook in mother's name",
           "name_hi": "माता के नाम बैंक पासबुक",
           "instructions_en": "Account for receiving instalments.",
-          "instructions_hi": "किस्तें प्राप्त करने हेतु खाता।"
+          "instructions_hi": "किस्तें प्राप्त करने हेतु खाता।",
+          "mandatory": true,
+          "where_to_get": "Your bank branch",
+          "typical_effort": "same day"
         }
       ],
       "sources": [
-        { "label": "Ministry site", "url": "https://wcd.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Ministry site",
+          "url": "https://wcd.nic.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -401,7 +517,14 @@
           "fail_explanation_en": "Women receiving paid maternity leave from employment are excluded.",
           "fail_explanation_hi": "रोजगार से सवैतनिक मातृत्व अवकाश पाने वाली महिलाएं बाहर हैं।"
         }
-      ]
+      ],
+      "target_groups": [
+        "woman"
+      ],
+      "age_limit_text": "Women aged 19 to 23 years (first living child).",
+      "income_limit_text": "Annual family income up to Rs 8 lakh.",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "atal-pension-yojana",
@@ -434,18 +557,33 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "KYC for opening the APY account.",
-          "instructions_hi": "एपीवाई खाता खोलने हेतु केवाईसी।"
+          "instructions_hi": "एपीवाई खाता खोलने हेतु केवाईसी।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "Savings bank passbook",
           "name_hi": "बचत बैंक पासबुक",
           "instructions_en": "Account from which monthly contributions are auto-debited.",
-          "instructions_hi": "जिस खाते से मासिक अंशदान स्वतः कटता है।"
+          "instructions_hi": "जिस खाते से मासिक अंशदान स्वतः कटता है।",
+          "mandatory": true,
+          "where_to_get": "Your bank branch",
+          "typical_effort": "same day"
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://www.npscra.nsdl.co.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://www.npscra.nsdl.co.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -492,7 +630,14 @@
           "fail_explanation_en": "Income-tax payers cannot join APY.",
           "fail_explanation_hi": "आयकर दाता एपीवाई में शामिल नहीं हो सकते।"
         }
-      ]
+      ],
+      "target_groups": [
+        "worker"
+      ],
+      "age_limit_text": "18 to 40 years at the time of joining.",
+      "income_limit_text": "No income limit — meant for workers in the unorganised sector.",
+      "application_deadline": null,
+      "deadline_note": "Applications open year-round."
     },
     {
       "slug": "sukanya-samriddhi-yojana",
@@ -525,24 +670,38 @@
           "name_en": "Girl child's birth certificate",
           "name_hi": "बालिका का जन्म प्रमाण पत्र",
           "instructions_en": "Proves the child is below 10 years at account opening.",
-          "instructions_hi": "खाता खोलते समय आयु 10 वर्ष से कम होने का प्रमाण।"
+          "instructions_hi": "खाता खोलते समय आयु 10 वर्ष से कम होने का प्रमाण।",
+          "mandatory": true,
+          "where_to_get": "Municipal corporation / Registrar of Births (crsorgi.gov.in)"
         },
         {
           "name_en": "Parent/guardian identity and address proof",
           "name_hi": "माता-पिता/अभिभावक की पहचान व पता प्रमाण",
           "instructions_en": "Aadhaar or equivalent KYC documents of the guardian.",
-          "instructions_hi": "अभिभावक का आधार या समकक्ष केवाईसी दस्तावेज।"
+          "instructions_hi": "अभिभावक का आधार या समकक्ष केवाईसी दस्तावेज।",
+          "mandatory": true
         },
         {
           "name_en": "Photograph of the girl child",
           "name_hi": "बालिका का फोटो",
           "instructions_en": "Passport-size photograph for the account records.",
-          "instructions_hi": "खाता अभिलेख हेतु पासपोर्ट आकार फोटो।"
+          "instructions_hi": "खाता अभिलेख हेतु पासपोर्ट आकार फोटो।",
+          "mandatory": true
         }
       ],
       "sources": [
-        { "label": "India Post", "url": "https://www.indiapost.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "India Post",
+          "url": "https://www.indiapost.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -567,7 +726,14 @@
           "fail_explanation_en": "A family can open at most two SSY accounts (twin exception applies).",
           "fail_explanation_hi": "एक परिवार अधिकतम दो एसएसवाई खाते खोल सकता है (जुड़वां अपवाद लागू)।"
         }
-      ]
+      ],
+      "target_groups": [
+        "woman"
+      ],
+      "age_limit_text": "Girl child below 10 years at the time of opening the account.",
+      "income_limit_text": "No income limit.",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "pm-mudra-yojana",
@@ -600,24 +766,42 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Identity proof for the loan application.",
-          "instructions_hi": "ऋण आवेदन हेतु पहचान प्रमाण।"
+          "instructions_hi": "ऋण आवेदन हेतु पहचान प्रमाण।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "Proof of business",
           "name_hi": "व्यवसाय का प्रमाण",
           "instructions_en": "Shop licence / Udyam registration / declaration of activity.",
-          "instructions_hi": "दुकान लाइसेंस / उद्यम पंजीकरण / गतिविधि घोषणा।"
+          "instructions_hi": "दुकान लाइसेंस / उद्यम पंजीकरण / गतिविधि घोषणा।",
+          "mandatory": true,
+          "where_to_get": "Municipal corporation / Udyam registration portal (udyamregistration.gov.in)",
+          "todo": "TODO: verify accepted business proofs with the lender."
         },
         {
           "name_en": "Bank account statement",
           "name_hi": "बैंक खाता विवरण",
           "instructions_en": "Recent statement of the business/borrower account.",
-          "instructions_hi": "व्यवसाय/ऋणी खाते का हालिया विवरण।"
+          "instructions_hi": "व्यवसाय/ऋणी खाते का हालिया विवरण।",
+          "mandatory": true,
+          "where_to_get": "Your bank branch",
+          "typical_effort": "same day"
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://www.mudra.org.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://www.mudra.org.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -653,7 +837,14 @@
           "fail_explanation_en": "Borrowers with defaults may be rejected by the lending institution.",
           "fail_explanation_hi": "चूक वाले आवेदकों को ऋण संस्था अस्वीकार कर सकती है।"
         }
-      ]
+      ],
+      "target_groups": [
+        "worker"
+      ],
+      "age_limit_text": "18 to 65 years.",
+      "income_limit_text": "No income limit.",
+      "application_deadline": null,
+      "deadline_note": null
     },
     {
       "slug": "ignoaps",
@@ -686,24 +877,41 @@
           "name_en": "Aadhaar card",
           "name_hi": "आधार कार्ड",
           "instructions_en": "Identification and DBT seeding.",
-          "instructions_hi": "पहचान व डीबीटी जोड़ने हेतु।"
+          "instructions_hi": "पहचान व डीबीटी जोड़ने हेतु।",
+          "mandatory": true,
+          "where_to_get": "Aadhaar Seva Kendra — uidai.gov.in"
         },
         {
           "name_en": "BPL ration card",
           "name_hi": "बीपीएल राशन कार्ड",
           "instructions_en": "Proves the household is below the poverty line.",
-          "instructions_hi": "परिवार के गरीबी रेखा से नीचे होने का प्रमाण।"
+          "instructions_hi": "परिवार के गरीबी रेखा से नीचे होने का प्रमाण।",
+          "mandatory": true,
+          "where_to_get": "State food & civil supplies department"
         },
         {
           "name_en": "Age proof",
           "name_hi": "आयु प्रमाण",
           "instructions_en": "Voter ID, birth certificate or equivalent for the 60+ requirement.",
-          "instructions_hi": "60+ शर्त हेतु मतदाता पहचान पत्र, जन्म प्रमाण पत्र या समकक्ष।"
+          "instructions_hi": "60+ शर्त हेतु मतदाता पहचान पत्र, जन्म प्रमाण पत्र या समकक्ष।",
+          "mandatory": true,
+          "where_to_get": "Election Commission (nvsp.in) or issuing authority",
+          "todo": "TODO: verify which age proofs are accepted."
         }
       ],
       "sources": [
-        { "label": "Official portal", "url": "https://nsap.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "Official portal",
+          "url": "https://nsap.nic.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -728,7 +936,14 @@
           "fail_explanation_en": "IGNOAPS targets BPL households.",
           "fail_explanation_hi": "आईजीएनओएपीएस बीपीएल परिवारों के लिए है।"
         }
-      ]
+      ],
+      "target_groups": [
+        "EWS"
+      ],
+      "age_limit_text": "60 years and above.",
+      "income_limit_text": "Belongs to a BPL family.",
+      "application_deadline": null,
+      "deadline_note": "Ask your Gram Panchayat or Block office about the annual cycle."
     },
     {
       "slug": "post-matric-scholarship-sc",
@@ -761,24 +976,42 @@
           "name_en": "Caste certificate (SC)",
           "name_hi": "जाति प्रमाण पत्र (अनुसूचित जाति)",
           "instructions_en": "Issued by a competent authority.",
-          "instructions_hi": "सक्षम प्राधिकारी द्वारा जारी।"
+          "instructions_hi": "सक्षम प्राधिकारी द्वारा जारी।",
+          "mandatory": true,
+          "where_to_get": "Tehsil / District administration or state e-District portal",
+          "todo": "TODO: verify the issuing authority in your state."
         },
         {
           "name_en": "Previous examination mark sheet",
           "name_hi": "पिछली परीक्षा की अंक तालिका",
           "instructions_en": "Proves post-matric enrolment eligibility.",
-          "instructions_hi": "उत्तर-मैट्रिक नामांकन पात्रता का प्रमाण।"
+          "instructions_hi": "उत्तर-मैट्रिक नामांकन पात्रता का प्रमाण।",
+          "mandatory": true,
+          "where_to_get": "Your school / board"
         },
         {
           "name_en": "Income certificate",
           "name_hi": "आय प्रमाण पत्र",
           "instructions_en": "Family income within the prescribed ceiling.",
-          "instructions_hi": "पारिवारिक आय निर्धारित सीमा के भीतर।"
+          "instructions_hi": "पारिवारिक आय निर्धारित सीमा के भीतर।",
+          "mandatory": true,
+          "where_to_get": "Tehsil / District administration or state e-District portal",
+          "todo": "TODO: verify the issuing authority in your state."
         }
       ],
       "sources": [
-        { "label": "National Scholarship Portal", "url": "https://scholarships.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
-        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+        {
+          "label": "National Scholarship Portal",
+          "url": "https://scholarships.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        },
+        {
+          "label": "myScheme",
+          "url": "https://www.myscheme.gov.in",
+          "last_verified": "2026-10-23",
+          "version": "1.0"
+        }
       ],
       "rules": [
         {
@@ -814,7 +1047,14 @@
           "fail_explanation_en": "Family income exceeds the ceiling for this scholarship.",
           "fail_explanation_hi": "पारिवारिक आय इस छात्रवृत्ति की सीमा से अधिक है।"
         }
-      ]
+      ],
+      "target_groups": [
+        "student"
+      ],
+      "age_limit_text": "Any age while studying (post-matriculation courses).",
+      "income_limit_text": "Annual family income up to Rs 2.5 lakh.",
+      "application_deadline": null,
+      "deadline_note": "Follows the academic year — check with your institution or the state portal."
     }
   ]
 }

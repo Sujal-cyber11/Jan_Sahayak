@@ -49,6 +49,9 @@ class Scheme(Base):
     category_hi = Column(String, nullable=False)
     # Applicable state or region, e.g. "All India", "Rural areas - all states".
     state = Column(String, nullable=False, default="All India")
+    # Comma-separated target groups: student, farmer, woman, worker, rural, EWS.
+    # Used only for labels and frontend filtering, never for eligibility.
+    target_groups = Column(Text, nullable=False, default="")
     ministry = Column(String, nullable=False)
     official_url = Column(String, nullable=False)
     # Application instructions as a JSON array of steps (section 8).
@@ -57,6 +60,13 @@ class Scheme(Base):
     last_verified = Column(String, nullable=False)  # ISO date, e.g. "2026-10-23"
     verified = Column(Boolean, nullable=False, default=False)
     todo_note = Column(Text, nullable=True)  # open questions about rule data
+    # Plain-language eligibility summaries (never parsed for decisions).
+    age_limit_text = Column(Text, nullable=True)
+    income_limit_text = Column(Text, nullable=True)
+    # Verified cut-off date (ISO) or null = none known (never invented).
+    application_deadline = Column(String, nullable=True)
+    # Cadence note, e.g. "Applications open year-round" (null = unknown).
+    deadline_note = Column(Text, nullable=True)
 
     rules = relationship(
         "EligibilityRule",
@@ -114,6 +124,14 @@ class RequiredDocument(Base):
     # Plain-language guidance, e.g. "Self-attested copy; original for verification".
     instructions_en = Column(Text, nullable=False)
     instructions_hi = Column(Text, nullable=False)
+    # Mandatory docs must be collected; optional ones are supporting evidence.
+    mandatory = Column(Boolean, nullable=False, default=True)
+    # Issuing office or official portal for obtaining the document (null = unknown).
+    where_to_get = Column(Text, nullable=True)
+    # Rough acquisition effort, e.g. "same day" (null = unknown; never guessed).
+    typical_effort = Column(String, nullable=True)
+    # Open question about this document's requirement (null if none).
+    todo_note = Column(Text, nullable=True)
     sort_order = Column(Integer, nullable=False, default=0)
 
     scheme = relationship("Scheme", back_populates="documents")
@@ -188,3 +206,28 @@ class SavedProgress(Base):
 
     profile = relationship("UserProfile", back_populates="saved_progress")
     scheme = relationship("Scheme")
+
+
+class ApplicationStatus(Base):
+    """Self-reported application state per profile per scheme.
+
+    The user tells us; we never query government systems. Allowed values
+    (checked in the API layer): NOT_APPLIED, APPLIED, UNDER_REVIEW,
+    APPROVED, REJECTED. One row per (profile, scheme) pair, upserted.
+    """
+
+    __tablename__ = "application_statuses"
+
+    id = Column(Integer, primary_key=True)
+    profile_id = Column(
+        Integer, ForeignKey("user_profiles.id"), nullable=False, index=True
+    )
+    scheme_id = Column(
+        Integer, ForeignKey("schemes.id"), nullable=False, index=True
+    )
+    status = Column(String, nullable=False, default="NOT_APPLIED")
+    # Optional user note, e.g. "Applied at CSC on 12 Oct".
+    note = Column(Text, nullable=True)
+    updated_at = Column(
+        DateTime, nullable=False, default=utc_now, onupdate=utc_now
+    )
