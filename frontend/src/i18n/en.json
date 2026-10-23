@@ -1,0 +1,11 @@
+{
+  "appName": "JanSahayak AI",
+  "tagline": "Scheme eligibility assistant",
+  "stageNote": "Stage 1 scaffold — profile wizard, eligibility engine and assistant arrive in later stages.",
+  "checkHealth": "Check backend connection",
+  "backendStatus": "Backend status",
+  "schemesLoaded": "schemes loaded",
+  "connected": "Connected",
+  "connectionFailed": "Connection failed — start the backend (see README)",
+  "language": "Language"
+}

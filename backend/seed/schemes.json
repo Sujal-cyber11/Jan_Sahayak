@@ -1,0 +1,820 @@
+{
+  "note": "All records below are REAL government schemes, but every record is marked verified=false and carries a TODO where a rule, amount or step is uncertain. Nothing here has been checked against the official portals yet - do not ship as verified data. sources[].version is a snapshot marker of our capture, not an official document version.",
+  "schemes": [
+    {
+      "slug": "pm-kisan",
+      "name_en": "PM Kisan Samman Nidhi (PM-KISAN)",
+      "name_hi": "पीएम किसान सम्मान निधि (पीएम-किसान)",
+      "description_en": "Income support to land-owning farmer families across India.",
+      "description_hi": "भारत भर के भूमि वाले किसान परिवारों को आय सहायता।",
+      "benefits_en": "Rs. 6,000 per year, paid in three instalments of Rs. 2,000 each.",
+      "benefits_hi": "प्रति वर्ष 6,000 रुपये, 2,000 रुपये की तीन किस्तों में।",
+      "category_en": "Agriculture",
+      "category_hi": "कृषि",
+      "state": "All India",
+      "ministry": "Ministry of Agriculture & Farmers Welfare",
+      "official_url": "https://pmkisan.gov.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify instalment amounts and professional/higher-income exclusions against latest PM-KISAN guidelines.",
+      "application_steps_en": [
+        "Register on pmkisan.gov.in via Farmers Corner / New Farmer Registration, or through a Common Service Centre (CSC).",
+        "Provide Aadhaar, bank account and land details; complete e-KYC.",
+        "Check Beneficiary Status on the portal; instalments are credited directly to the bank account."
+      ],
+      "application_steps_hi": [
+        "pmkisan.gov.in पर फार्मर्स कॉर्नर / नया किसान पंजीकरण से, या सीएससी केंद्र से पंजीकरण करें।",
+        "आधार, बैंक खाता और भूमि विवरण दें; ई-केवाईसी पूर्ण करें।",
+        "पोर्टल पर लाभार्थी स्थिति जांचें; किस्तें सीधे बैंक खाते में जमा होती हैं।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Self-attested copy for e-KYC.",
+          "instructions_hi": "ई-केवाईसी हेतु स्व-प्रमाणित प्रति।"
+        },
+        {
+          "name_en": "Bank passbook / account details",
+          "name_hi": "बैंक पासबुक / खाता विवरण",
+          "instructions_en": "Account must be in the beneficiary's name and linked to Aadhaar.",
+          "instructions_hi": "खाता लाभार्थी के नाम और आधार से जुड़ा होना चाहिए।"
+        },
+        {
+          "name_en": "Land ownership records",
+          "name_hi": "भूमि स्वामित्व अभिलेख",
+          "instructions_en": "Khasra/khatauni or equivalent revenue record.",
+          "instructions_hi": "खसरा/खतौनी या समकक्ष राजस्व अभिलेख।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://pmkisan.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "is_farmer_family",
+          "label_en": "Land-owning farmer family",
+          "label_hi": "भूमि वाले किसान परिवार",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "PM-KISAN covers land-owning farmer families.",
+          "pass_explanation_hi": "पीएम-किसान भूमि वाले किसान परिवारों को कवर करता है।",
+          "fail_explanation_en": "PM-KISAN is only for land-owning farmer families.",
+          "fail_explanation_hi": "पीएम-किसान केवल भूमि वाले किसान परिवारों के लिए है।"
+        },
+        {
+          "criterion": "has_cultivable_land",
+          "label_en": "Holds cultivable land",
+          "label_hi": "कृषि योग्य भूमि रखते हैं",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "You hold cultivable land as per scheme definition.",
+          "pass_explanation_hi": "योजना की परिभाषा अनुसार आपके पास कृषि योग्य भूमि है।",
+          "fail_explanation_en": "Cultivable land holding is required for PM-KISAN.",
+          "fail_explanation_hi": "पीएम-किसान के लिए कृषि योग्य भूमि होना आवश्यक है।"
+        },
+        {
+          "criterion": "family_pays_income_tax",
+          "label_en": "No family member pays income tax",
+          "label_hi": "परिवार का कोई सदस्य आयकर नहीं भरता",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "No family member pays income tax, so you qualify on this criterion.",
+          "pass_explanation_hi": "परिवार का कोई सदस्य आयकर नहीं भरता, इसलिए आप इस शर्त पर पात्र हैं।",
+          "fail_explanation_en": "Families where any member pays income tax are excluded from PM-KISAN.",
+          "fail_explanation_hi": "जिन परिवारों का कोई सदस्य आयकर भरता है, वे पीएम-किसान से बाहर हैं।"
+        }
+      ]
+    },
+    {
+      "slug": "pmay-gramin",
+      "name_en": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
+      "name_hi": "प्रधानमंत्री आवास योजना - ग्रामीण (पीएमएवाई-जी)",
+      "description_en": "Assistance for a pucca house for rural households that are houseless or live in kutcha/dilapidated houses.",
+      "description_hi": "बेघर या कच्चे मकान में रहने वाले ग्रामीण परिवारों को पक्का घर बनाने हेतु सहायता।",
+      "benefits_en": "Financial assistance for construction of a pucca house with basic amenities in rural areas.",
+      "benefits_hi": "ग्रामीण क्षेत्रों में बुनियादी सुविधाओं सहित पक्का मकान निर्माण हेतु वित्तीय सहायता।",
+      "category_en": "Housing",
+      "category_hi": "आवास",
+      "state": "All India (rural areas)",
+      "ministry": "Ministry of Rural Development",
+      "official_url": "https://pmayg.nic.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify unit assistance amounts (plain/hilly areas) and SECC 2011 beneficiary-list dependency.",
+      "application_steps_en": [
+        "Check whether your name appears in the SECC 2011 / Awaas+ beneficiary list with the Gram Panchayat.",
+        "Apply through the Gram Panchayat or AwaasSoft with the required documents.",
+        "Track sanction and instalment releases via AwaasSoft / pmayg.nic.in."
+      ],
+      "application_steps_hi": [
+        "ग्राम पंचायत से पता करें कि आपका नाम एसईसीसी 2011 / आवास+ लाभार्थी सूची में है या नहीं।",
+        "आवश्यक दस्तावेजों के साथ ग्राम पंचायत या आवाससॉफ्ट के माध्यम से आवेदन करें।",
+        "आवाससॉफ्ट / pmayg.nic.in पर स्वीकृति और किस्तों की स्थिति देखें।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Self-attested copy for beneficiary identification.",
+          "instructions_hi": "लाभार्थी पहचान हेतु स्व-प्रमाणित प्रति।"
+        },
+        {
+          "name_en": "MGNREGA job card / SECC beneficiary reference",
+          "name_hi": "मनरेगा जॉब कार्ड / एसईसीसी लाभार्थी संदर्भ",
+          "instructions_en": "Used to confirm the household's inclusion in the target list.",
+          "instructions_hi": "परिवार की लक्ष्य सूची में शामिलता की पुष्टि हेतु।"
+        },
+        {
+          "name_en": "Bank passbook",
+          "name_hi": "बैंक पासबुक",
+          "instructions_en": "Account for direct benefit transfer of instalments.",
+          "instructions_hi": "किस्तों के सीधे हस्तांतरण हेतु खाता।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://pmayg.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "lives_in_rural",
+          "label_en": "Resides in a rural area",
+          "label_hi": "ग्रामीण क्षेत्र में रहते हैं",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "PMAY-G is for rural households.",
+          "pass_explanation_hi": "पीएमएवाई-जी ग्रामीण परिवारों के लिए है।",
+          "fail_explanation_en": "PMAY-G is only for rural areas; urban households should check PMAY-U.",
+          "fail_explanation_hi": "पीएमएवाई-जी केवल ग्रामीण क्षेत्रों के लिए है; शहरी परिवार पीएमएवाई-यू देखें।"
+        },
+        {
+          "criterion": "house_type",
+          "label_en": "Houseless or kutcha house",
+          "label_hi": "बेघर या कच्चा मकान",
+          "operator": "in",
+          "threshold": "houseless,kutcha",
+          "pass_explanation_en": "Household is houseless or lives in a kutcha house, matching the PMAY-G target group.",
+          "pass_explanation_hi": "परिवार बेघर है या कच्चे मकान में रहता है, जो पीएमएवाई-जी लक्ष्य समूह में आता है।",
+          "fail_explanation_en": "Households already living in a pucca house are not covered under PMAY-G.",
+          "fail_explanation_hi": "पक्के मकान में रहने वाले परिवार पीएमएवाई-जी के अंतर्गत शामिल नहीं हैं।"
+        },
+        {
+          "criterion": "has_pmay_house",
+          "label_en": "Has not already received PMAY house",
+          "label_hi": "पहले से पीएमएवाई मकान नहीं मिला",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "No prior PMAY housing benefit received by the family.",
+          "pass_explanation_hi": "परिवार को पहले पीएमएवाई आवास लाभ नहीं मिला है।",
+          "fail_explanation_en": "Families that already received a PMAY house are not eligible again.",
+          "fail_explanation_hi": "जिन परिवारों को पहले पीएमएवाई मकान मिल चुका है, वे दोबारा पात्र नहीं हैं।"
+        }
+      ]
+    },
+    {
+      "slug": "pmay-urban",
+      "name_en": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
+      "name_hi": "प्रधानमंत्री आवास योजना - शहरी (पीएमएवाई-यू)",
+      "description_en": "Interest subsidy and assistance for urban households (EWS/LIG/MIG) without a pucca house.",
+      "description_hi": "पक्के मकान से वंचित शहरी परिवारों (ईडब्ल्यूएस/एलआईजी/एमआईजी) को ब्याज सब्सिडी व सहायता।",
+      "benefits_en": "Credit-linked interest subsidy on home loans and assistance for EWS/LIG/MIG categories.",
+      "benefits_hi": "गृह ऋण पर ऋण-जुड़ी ब्याज सब्सिडी तथा ईडब्ल्यूएस/एलआईजी/एमआईजी श्रेणियों को सहायता।",
+      "category_en": "Housing",
+      "category_hi": "आवास",
+      "state": "All India (urban areas)",
+      "ministry": "Ministry of Housing and Urban Affairs",
+      "official_url": "https://pmay-urban.gov.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify income caps per category (EWS/LIG/MIG) and current interest subsidy rates.",
+      "application_steps_en": [
+        "Confirm your category (EWS/LIG/MIG) and that household income is within the cap.",
+        "Apply on pmay-urban.gov.in or through a primary lending institution for the credit-linked subsidy.",
+        "Track your application; the subsidy is credited to the loan account after sanction."
+      ],
+      "application_steps_hi": [
+        "अपनी श्रेणी (ईडब्ल्यूएस/एलआईजी/एमआईजी) और आय सीमा की पुष्टि करें।",
+        "pmay-urban.gov.in पर या ऋण-जुड़ी सब्सिडी हेतु प्राथमिक ऋण संस्था के माध्यम से आवेदन करें।",
+        "आवेदन की स्थिति देखें; स्वीकृति के बाद सब्सिडी ऋण खाते में जमा होती है।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Self-attested copy for identity verification.",
+          "instructions_hi": "पहचान सत्यापन हेतु स्व-प्रमाणित प्रति।"
+        },
+        {
+          "name_en": "Income certificate",
+          "name_hi": "आय प्रमाण पत्र",
+          "instructions_en": "Issued by a competent authority to prove the category income cap.",
+          "instructions_hi": "श्रेणी आय सीमा सिद्ध करने हेतु सक्षम प्राधिकारी द्वारा जारी।"
+        },
+        {
+          "name_en": "Affidavit of not owning a pucca house",
+          "name_hi": "पक्का मकान न होने का शपथ पत्र",
+          "instructions_en": "Declares the family owns no pucca house anywhere in India.",
+          "instructions_hi": "घोषणा कि परिवार के नाम भारत में कहीं पक्का मकान नहीं है।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://pmay-urban.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "lives_in_urban",
+          "label_en": "Resides in an urban area",
+          "label_hi": "शहरी क्षेत्र में रहते हैं",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "PMAY-U is for urban households.",
+          "pass_explanation_hi": "पीएमएवाई-यू शहरी परिवारों के लिए है।",
+          "fail_explanation_en": "PMAY-U is only for urban areas; rural households should check PMAY-G.",
+          "fail_explanation_hi": "पीएमएवाई-यू केवल शहरी क्षेत्रों के लिए है; ग्रामीण परिवार पीएमएवाई-जी देखें।"
+        },
+        {
+          "criterion": "annual_income",
+          "label_en": "Household income within category cap",
+          "label_hi": "पारिवारिक आय श्रेणी सीमा के भीतर",
+          "operator": "<=",
+          "threshold": "600000",
+          "pass_explanation_en": "Income is within the PMAY-U income band for your category.",
+          "pass_explanation_hi": "आय आपकी श्रेणी के लिए पीएमएवाई-यू आय सीमा के भीतर है।",
+          "fail_explanation_en": "Income exceeds the PMAY-U category caps (EWS Rs.3L / LIG Rs.6L / MIG Rs.12-18L).",
+          "fail_explanation_hi": "आय पीएमएवाई-यू श्रेणी सीमा से अधिक है (ईडब्ल्यूएस 3 लाख / एलआईजी 6 लाख / एमआईजी 12-18 लाख)।"
+        },
+        {
+          "criterion": "has_pucca_house",
+          "label_en": "Does not own a pucca house",
+          "label_hi": "पक्के मकान का स्वामी नहीं",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "The family does not own a pucca house in their name anywhere in India.",
+          "pass_explanation_hi": "परिवार के नाम भारत में कहीं भी पक्का मकान नहीं है।",
+          "fail_explanation_en": "Families that own a pucca house are not eligible under PMAY-U.",
+          "fail_explanation_hi": "जिन परिवारों के नाम पक्का मकान है, वे पीएमएवाई-यू के अंतर्गत पात्र नहीं हैं।"
+        }
+      ]
+    },
+    {
+      "slug": "ab-pmjay",
+      "name_en": "Ayushman Bharat PM-JAY",
+      "name_hi": "आयुष्मान भारत पीएम-जेएवाई",
+      "description_en": "Hospitalisation cover for families identified through deprivation criteria or state beneficiary lists.",
+      "description_hi": "वंचितता मानदंड या राज्य लाभार्थी सूचियों से चिह्नित परिवारों को अस्पताल उपचार कवरेज।",
+      "benefits_en": "Health cover of up to Rs. 5 lakh per family per year for secondary and tertiary hospitalisation.",
+      "benefits_hi": "द्वितीयक व तृतीयक अस्पताल उपचार हेतु प्रति परिवार प्रति वर्ष 5 लाख रुपये तक स्वास्थ्य कवरेज।",
+      "category_en": "Health",
+      "category_hi": "स्वास्थ्य",
+      "state": "All India",
+      "ministry": "Ministry of Health & Family Welfare",
+      "official_url": "https://pmjay.gov.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify current beneficiary identification (SECC 2011, state lists, and 70+ age expansion) and coverage amount.",
+      "application_steps_en": [
+        "Check family eligibility with the 'Am I Eligible' tool on pmjay.gov.in.",
+        "Get the Ayushman e-card issued via the portal, CSC or Arogya Mitra at hospitals.",
+        "Present the e-card at an empanelled hospital for cashless treatment."
+      ],
+      "application_steps_hi": [
+        "pmjay.gov.in पर 'क्या मैं पात्र हूं' टूल से परिवार की पात्रता जांचें।",
+        "पोर्टल, सीएससी या अस्पताल के आरोग्य मित्र से आयुष्मान ई-कार्ड बनवाएं।",
+        "सूचीबद्ध अस्पताल में ई-कार्ड दिखाकर कैशलेस उपचार लें।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Used for beneficiary identification and e-card generation.",
+          "instructions_hi": "लाभार्थी पहचान व ई-कार्ड निर्माण हेतु।"
+        },
+        {
+          "name_en": "Ration card / SECC reference",
+          "name_hi": "राशन कार्ड / एसईसीसी संदर्भ",
+          "instructions_en": "Helps confirm household inclusion in the beneficiary list.",
+          "instructions_hi": "लाभार्थी सूची में परिवार की शामिलता की पुष्टि हेतु।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://pmjay.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "National Portal of India", "url": "https://www.india.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "in_secc_2011_list",
+          "label_en": "Family in SECC/state beneficiary list",
+          "label_hi": "परिवार एसईसीसी/राज्य लाभार्थी सूची में",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "The family appears in the SECC 2011 deprivation list or a state PM-JAY beneficiary list.",
+          "pass_explanation_hi": "परिवार एसईसीसी 2011 वंचित सूची या राज्य पीएम-जेएवाई लाभार्थी सूची में शामिल है।",
+          "fail_explanation_en": "PM-JAY targets families identified via SECC 2011 deprivation criteria or state lists.",
+          "fail_explanation_hi": "पीएम-जेएवाई एसईसीसी 2011 वंचितता मानदंड या राज्य सूचियों से चिह्नित परिवारों के लिए है।"
+        }
+      ]
+    },
+    {
+      "slug": "pmmvy",
+      "name_en": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+      "name_hi": "प्रधानमंत्री मातृ वंदना योजना (पीएमएमवीवाई)",
+      "description_en": "Cash benefit for pregnant and lactating mothers for the first live birth.",
+      "description_hi": "प्रथम जीवित जन्म पर गर्भवती व स्तनपान कराने वाली माताओं को नकद लाभ।",
+      "benefits_en": "Cash benefit (in instalments) to partly compensate wage loss around the first live birth.",
+      "benefits_hi": "प्रथम जीवित जन्म के दौरान मजदूरी हानि की आंशिक क्षतिपूर्ति हेतु (किस्तों में) नकद लाभ।",
+      "category_en": "Women & Children",
+      "category_hi": "महिला एवं बाल",
+      "state": "All India",
+      "ministry": "Ministry of Women and Child Development",
+      "official_url": "https://wcd.nic.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify benefit amount (installments) and exclusions for regular wage/salaried employment.",
+      "application_steps_en": [
+        "Register at the Anganwadi centre or health facility with the MCP card / ANC record.",
+        "Ensure the bank account is in the mother's name and linked to Aadhaar.",
+        "Instalments are released after registration, antenatal check-up and birth registration."
+      ],
+      "application_steps_hi": [
+        "आंगनवाड़ी केंद्र या स्वास्थ्य केंद्र पर एमसीपी कार्ड / एएनसी रिकॉर्ड के साथ पंजीकरण कराएं।",
+        "सुनिश्चित करें कि बैंक खाता माता के नाम और आधार से जुड़ा हो।",
+        "पंजीकरण, प्रसवपूर्व जांच और जन्म पंजीकरण के बाद किस्तें जारी होती हैं।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Mother's Aadhaar for identification and DBT.",
+          "instructions_hi": "पहचान व डीबीटी हेतु माता का आधार।"
+        },
+        {
+          "name_en": "MCP card / ANC registration",
+          "name_hi": "एमसीपी कार्ड / एएनसी पंजीकरण",
+          "instructions_en": "Mother & Child Protection card from Anganwadi/health facility.",
+          "instructions_hi": "आंगनवाड़ी/स्वास्थ्य केंद्र से मातृ-शिशु सुरक्षा कार्ड।"
+        },
+        {
+          "name_en": "Bank passbook in mother's name",
+          "name_hi": "माता के नाम बैंक पासबुक",
+          "instructions_en": "Account for receiving instalments.",
+          "instructions_hi": "किस्तें प्राप्त करने हेतु खाता।"
+        }
+      ],
+      "sources": [
+        { "label": "Ministry site", "url": "https://wcd.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "is_pregnant_or_lactating",
+          "label_en": "Pregnant or lactating mother",
+          "label_hi": "गर्भवती या स्तनपान कराने वाली माता",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "PMMVY is for pregnant women and lactating mothers.",
+          "pass_explanation_hi": "पीएमएमवीवाई गर्भवती महिलाओं व स्तनपान कराने वाली माताओं के लिए है।",
+          "fail_explanation_en": "The applicant must be pregnant or a lactating mother.",
+          "fail_explanation_hi": "आवेदक को गर्भवती या स्तनपान कराने वाली माता होनी चाहिए।"
+        },
+        {
+          "criterion": "birth_order",
+          "label_en": "First child (live birth)",
+          "label_hi": "पहली संतान (जीवित जन्म)",
+          "operator": "==",
+          "threshold": "1",
+          "pass_explanation_en": "Benefit applies for the first live birth.",
+          "pass_explanation_hi": "लाभ प्रथम जीवित जन्म पर लागू होता है।",
+          "fail_explanation_en": "PMMVY is only for the first live birth.",
+          "fail_explanation_hi": "पीएमएमवीवाई केवल प्रथम जीवित जन्म के लिए है।"
+        },
+        {
+          "criterion": "in_formal_employment",
+          "label_en": "Not in regular salaried employment",
+          "label_hi": "नियमित वेतनभोगी रोजगार में नहीं",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "Not in regular wage/salaried employment, so the wage-loss benefit applies.",
+          "pass_explanation_hi": "नियमित वेतनभोगी रोजगार में नहीं हैं, इसलिए मजदूरी-हानि लाभ लागू होता है।",
+          "fail_explanation_en": "Women receiving paid maternity leave from employment are excluded.",
+          "fail_explanation_hi": "रोजगार से सवैतनिक मातृत्व अवकाश पाने वाली महिलाएं बाहर हैं।"
+        }
+      ]
+    },
+    {
+      "slug": "atal-pension-yojana",
+      "name_en": "Atal Pension Yojana (APY)",
+      "name_hi": "अटल पेंशन योजना (एपीवाई)",
+      "description_en": "Guaranteed pension after age 60 for subscribers who join between 18 and 40.",
+      "description_hi": "18 से 40 वर्ष के बीच जुड़ने वाले ग्राहकों को 60 वर्ष के बाद गारंटीकृत पेंशन।",
+      "benefits_en": "Guaranteed monthly pension of Rs. 1,000-5,000 from age 60, depending on contributions.",
+      "benefits_hi": "अंशदान के अनुसार 60 वर्ष की आयु से 1,000-5,000 रुपये मासिक पेंशन की गारंटी।",
+      "category_en": "Pension",
+      "category_hi": "पेंशन",
+      "state": "All India",
+      "ministry": "Pension Fund Regulatory and Development Authority (PFRDA)",
+      "official_url": "https://www.npscra.nsdl.co.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify taxpayer exclusion (effective date) and contribution slabs tied to pension amount.",
+      "application_steps_en": [
+        "Visit any bank or post office with Aadhaar and a savings bank account.",
+        "Fill the APY form; choose the pension slab and set up the auto-debit mandate.",
+        "Monthly contributions are auto-debited; pension starts at age 60."
+      ],
+      "application_steps_hi": [
+        "आधार और बचत खाते के साथ किसी बैंक या डाकघर जाएं।",
+        "एपीवाई फॉर्म भरें; पेंशन स्लैब चुनें और ऑटो-डेबिट अधिदेश दें।",
+        "मासिक अंशदान स्वतः कटता है; पेंशन 60 वर्ष की आयु से शुरू होती है।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "KYC for opening the APY account.",
+          "instructions_hi": "एपीवाई खाता खोलने हेतु केवाईसी।"
+        },
+        {
+          "name_en": "Savings bank passbook",
+          "name_hi": "बचत बैंक पासबुक",
+          "instructions_en": "Account from which monthly contributions are auto-debited.",
+          "instructions_hi": "जिस खाते से मासिक अंशदान स्वतः कटता है।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://www.npscra.nsdl.co.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "age",
+          "label_en": "Age between 18 and 40",
+          "label_hi": "आयु 18 से 40 के बीच",
+          "operator": ">=",
+          "threshold": "18",
+          "pass_explanation_en": "Age is at least 18.",
+          "pass_explanation_hi": "आयु कम से कम 18 वर्ष है।",
+          "fail_explanation_en": "You must be at least 18 years old to join APY.",
+          "fail_explanation_hi": "एपीवाई से जुड़ने के लिए आयु कम से कम 18 वर्ष होनी चाहिए।"
+        },
+        {
+          "criterion": "age",
+          "label_en": "Age between 18 and 40",
+          "label_hi": "आयु 18 से 40 के बीच",
+          "operator": "<=",
+          "threshold": "40",
+          "pass_explanation_en": "Age is 40 or below.",
+          "pass_explanation_hi": "आयु 40 वर्ष या उससे कम है।",
+          "fail_explanation_en": "APY enrolment is only up to age 40.",
+          "fail_explanation_hi": "एपीवाई में नामांकन केवल 40 वर्ष की आयु तक है।"
+        },
+        {
+          "criterion": "has_bank_account",
+          "label_en": "Has a savings bank account",
+          "label_hi": "बचत बैंक खाता है",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "A savings bank account is available for auto-debit of contributions.",
+          "pass_explanation_hi": "अंशदान की स्वचालित कटौती हेतु बचत बैंक खाता उपलब्ध है।",
+          "fail_explanation_en": "APY contributions need a savings bank account with auto-debit.",
+          "fail_explanation_hi": "एपीवाई अंशदान के लिए ऑटो-डेबिट वाला बचत खाता आवश्यक है।"
+        },
+        {
+          "criterion": "is_income_taxpayer",
+          "label_en": "Not an income-tax payer",
+          "label_hi": "आयकर दाता नहीं",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "Not an income-tax payer, so APY enrolment is allowed.",
+          "pass_explanation_hi": "आयकर दाता नहीं हैं, इसलिए एपीवाई नामांकन संभव है।",
+          "fail_explanation_en": "Income-tax payers cannot join APY.",
+          "fail_explanation_hi": "आयकर दाता एपीवाई में शामिल नहीं हो सकते।"
+        }
+      ]
+    },
+    {
+      "slug": "sukanya-samriddhi-yojana",
+      "name_en": "Sukanya Samriddhi Yojana (SSY)",
+      "name_hi": "सुकन्या समृद्धि योजना (एसएसवाई)",
+      "description_en": "Small savings account in the name of a girl child below 10, for her education and marriage.",
+      "description_hi": "10 वर्ष से कम आयु की बालिका के नाम, उसकी शिक्षा व विवाह हेतु लघु बचत खाता।",
+      "benefits_en": "Long-term government-backed savings account for a girl child with tax benefits.",
+      "benefits_hi": "बालिका के लिए कर लाभ सहित दीर्घकालिक सरकारी-समर्थित बचत खाता।",
+      "category_en": "Savings",
+      "category_hi": "बचत",
+      "state": "All India",
+      "ministry": "Ministry of Finance",
+      "official_url": "https://www.indiapost.gov.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify maximum two-account rule (twin exception) and do NOT state an interest rate - it is revised quarterly.",
+      "application_steps_en": [
+        "Visit a bank branch or post office with the girl child's birth certificate.",
+        "Open the account in the girl's name with the minimum deposit.",
+        "Deposit annually until the account matures; withdrawals are allowed per the scheme rules."
+      ],
+      "application_steps_hi": [
+        "बालिका का जन्म प्रमाण पत्र लेकर बैंक शाखा या डाकघर जाएं।",
+        "न्यूनतम जमा के साथ बालिका के नाम खाता खोलें।",
+        "खाता परिपक्व होने तक वार्षिक जमा करें; योजना नियमों अनुसार निकासी की अनुमति है।"
+      ],
+      "documents": [
+        {
+          "name_en": "Girl child's birth certificate",
+          "name_hi": "बालिका का जन्म प्रमाण पत्र",
+          "instructions_en": "Proves the child is below 10 years at account opening.",
+          "instructions_hi": "खाता खोलते समय आयु 10 वर्ष से कम होने का प्रमाण।"
+        },
+        {
+          "name_en": "Parent/guardian identity and address proof",
+          "name_hi": "माता-पिता/अभिभावक की पहचान व पता प्रमाण",
+          "instructions_en": "Aadhaar or equivalent KYC documents of the guardian.",
+          "instructions_hi": "अभिभावक का आधार या समकक्ष केवाईसी दस्तावेज।"
+        },
+        {
+          "name_en": "Photograph of the girl child",
+          "name_hi": "बालिका का फोटो",
+          "instructions_en": "Passport-size photograph for the account records.",
+          "instructions_hi": "खाता अभिलेख हेतु पासपोर्ट आकार फोटो।"
+        }
+      ],
+      "sources": [
+        { "label": "India Post", "url": "https://www.indiapost.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "has_girl_child_under_10",
+          "label_en": "Has a girl child below age 10",
+          "label_hi": "10 वर्ष से कम की बालिका है",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "Account can be opened for a girl child below 10 years.",
+          "pass_explanation_hi": "10 वर्ष से कम आयु की बालिका के लिए खाता खोला जा सकता है।",
+          "fail_explanation_en": "The girl child must be below 10 years at account opening.",
+          "fail_explanation_hi": "खाता खोलते समय बालिका की आयु 10 वर्ष से कम होनी चाहिए।"
+        },
+        {
+          "criterion": "ssy_accounts_count",
+          "label_en": "Maximum two SSY accounts per family",
+          "label_hi": "प्रति परिवार अधिकतम दो एसएसवाई खाते",
+          "operator": "<=",
+          "threshold": "2",
+          "pass_explanation_en": "The family has fewer than two SSY accounts.",
+          "pass_explanation_hi": "परिवार के दो से कम एसएसवाई खाते हैं।",
+          "fail_explanation_en": "A family can open at most two SSY accounts (twin exception applies).",
+          "fail_explanation_hi": "एक परिवार अधिकतम दो एसएसवाई खाते खोल सकता है (जुड़वां अपवाद लागू)।"
+        }
+      ]
+    },
+    {
+      "slug": "pm-mudra-yojana",
+      "name_en": "Pradhan Mantri Mudra Yojana (PMMY)",
+      "name_hi": "प्रधानमंत्री मुद्रा योजना (पीएमएमवाई)",
+      "description_en": "Collateral-free loans via banks/NBFCs/MFIs for non-corporate small businesses.",
+      "description_hi": "गैर-निगमित लघु व्यवसायों को बैंक/एनबीएफसी/एमएफआई से बिना गारंटी ऋण।",
+      "benefits_en": "Collateral-free loans: Shishu up to Rs. 50,000; Kishor Rs. 50,001-5 lakh; Tarun Rs. 5-10 lakh.",
+      "benefits_hi": "बिना गारंटी ऋण: शिशु 50,000 तक; किशोर 50,001-5 लाख; तरुण 5-10 लाख।",
+      "category_en": "Entrepreneurship",
+      "category_hi": "उद्यमिता",
+      "state": "All India",
+      "ministry": "Ministry of Finance (MUDRA Ltd)",
+      "official_url": "https://www.mudra.org.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify current loan caps (Tarun Plus extension to Rs. 20 lakh) and that MUDRA does not lend directly - loans come via banks.",
+      "application_steps_en": [
+        "Prepare a simple business/loan proposal for the non-farm activity.",
+        "Apply at a bank/NBFC/MFI branch or seek guidance via the Udyami Mitra portal.",
+        "Receive the loan in your account and repay per the agreed schedule."
+      ],
+      "application_steps_hi": [
+        "गैर-कृषि गतिविधि हेतु सरल व्यवसाय/ऋण प्रस्ताव तैयार करें।",
+        "बैंक/एनबीएफसी/एमएफआई शाखा में आवेदन करें या उद्यमी मित्र पोर्टल से मार्गदर्शन लें।",
+        "खाते में ऋण प्राप्त करें और तय अनुसूची के अनुसार चुकाएं।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Identity proof for the loan application.",
+          "instructions_hi": "ऋण आवेदन हेतु पहचान प्रमाण।"
+        },
+        {
+          "name_en": "Proof of business",
+          "name_hi": "व्यवसाय का प्रमाण",
+          "instructions_en": "Shop licence / Udyam registration / declaration of activity.",
+          "instructions_hi": "दुकान लाइसेंस / उद्यम पंजीकरण / गतिविधि घोषणा।"
+        },
+        {
+          "name_en": "Bank account statement",
+          "name_hi": "बैंक खाता विवरण",
+          "instructions_en": "Recent statement of the business/borrower account.",
+          "instructions_hi": "व्यवसाय/ऋणी खाते का हालिया विवरण।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://www.mudra.org.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "has_business_plan",
+          "label_en": "Non-farm small business activity",
+          "label_hi": "गैर-कृषि लघु व्यवसाय गतिविधि",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "MUDRA loans cover income-generating non-farm small business activities.",
+          "pass_explanation_hi": "मुद्रा ऋण आय-सृजक गैर-कृषि लघु व्यवसाय गतिविधियों को कवर करते हैं।",
+          "fail_explanation_en": "MUDRA covers non-corporate, non-farm micro/small enterprises only.",
+          "fail_explanation_hi": "मुद्रा केवल गैर-निगमित, गैर-कृषि सूक्ष्म/लघु उद्यमों को कवर करती है।"
+        },
+        {
+          "criterion": "loan_amount",
+          "label_en": "Loan requirement up to Rs. 10 lakh",
+          "label_hi": "ऋण आवश्यकता 10 लाख रुपये तक",
+          "operator": "<=",
+          "threshold": "1000000",
+          "pass_explanation_en": "Requested amount fits within Shishu/Kishor/Tarun slabs.",
+          "pass_explanation_hi": "मांगी गई राशि शिशु/किशोर/तरुण स्लैब में आती है।",
+          "fail_explanation_en": "Amount exceeds the standard MUDRA cap of Rs. 10 lakh.",
+          "fail_explanation_hi": "राशि 10 लाख रुपये की मानक मुद्रा सीमा से अधिक है।"
+        },
+        {
+          "criterion": "has_npa_history",
+          "label_en": "No bank loan defaults",
+          "label_hi": "कोई बैंक ऋण चूक नहीं",
+          "operator": "==",
+          "threshold": "false",
+          "pass_explanation_en": "No default history reported by banks/NBFCs.",
+          "pass_explanation_hi": "बैंक/एनबीएफसी द्वारा कोई चूक इतिहास दर्ज नहीं है।",
+          "fail_explanation_en": "Borrowers with defaults may be rejected by the lending institution.",
+          "fail_explanation_hi": "चूक वाले आवेदकों को ऋण संस्था अस्वीकार कर सकती है।"
+        }
+      ]
+    },
+    {
+      "slug": "ignoaps",
+      "name_en": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+      "name_hi": "इंदिरा गांधी राष्ट्रीय वृद्धावस्था पेंशन योजना (आईजीएनओएपीएस)",
+      "description_en": "Monthly pension under NSAP for persons aged 60+ from households below the poverty line.",
+      "description_hi": "गरीबी रेखा से नीचे के परिवारों के 60+ आयु वर्ग के व्यक्तियों को एनएसएपी के तहत मासिक पेंशन।",
+      "benefits_en": "Monthly old-age pension (central share, with state top-ups varying by state).",
+      "benefits_hi": "मासिक वृद्धावस्था पेंशन (केंद्रीय अंश; राज्य अनुसार राज्य हिस्सा अलग-अलग)।",
+      "category_en": "Social Security",
+      "category_hi": "सामाजिक सुरक्षा",
+      "state": "All India",
+      "ministry": "Ministry of Rural Development (NSAP)",
+      "official_url": "https://nsap.nic.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify pension amount (central share and state top-ups vary) and exact BPL identification method.",
+      "application_steps_en": [
+        "Apply at the Gram Panchayat / municipality or the state social welfare office with BPL proof.",
+        "The application is verified and approved by the state/UT authority.",
+        "The pension is credited monthly to the beneficiary's bank or post office account."
+      ],
+      "application_steps_hi": [
+        "बीपीएल प्रमाण के साथ ग्राम पंचायत / नगर निकाय या राज्य समाज कल्याण कार्यालय में आवेदन करें।",
+        "आवेदन का सत्यापन व अनुमोदन राज्य/संघ राज्य प्राधिकारी करता है।",
+        "पेंशन मासिक रूप से लाभार्थी के बैंक या डाकघर खाते में जमा होती है।"
+      ],
+      "documents": [
+        {
+          "name_en": "Aadhaar card",
+          "name_hi": "आधार कार्ड",
+          "instructions_en": "Identification and DBT seeding.",
+          "instructions_hi": "पहचान व डीबीटी जोड़ने हेतु।"
+        },
+        {
+          "name_en": "BPL ration card",
+          "name_hi": "बीपीएल राशन कार्ड",
+          "instructions_en": "Proves the household is below the poverty line.",
+          "instructions_hi": "परिवार के गरीबी रेखा से नीचे होने का प्रमाण।"
+        },
+        {
+          "name_en": "Age proof",
+          "name_hi": "आयु प्रमाण",
+          "instructions_en": "Voter ID, birth certificate or equivalent for the 60+ requirement.",
+          "instructions_hi": "60+ शर्त हेतु मतदाता पहचान पत्र, जन्म प्रमाण पत्र या समकक्ष।"
+        }
+      ],
+      "sources": [
+        { "label": "Official portal", "url": "https://nsap.nic.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "age",
+          "label_en": "Age 60 or above",
+          "label_hi": "आयु 60 वर्ष या अधिक",
+          "operator": ">=",
+          "threshold": "60",
+          "pass_explanation_en": "Meets the age requirement for IGNOAPS.",
+          "pass_explanation_hi": "आईजीएनओएपीएस की आयु शर्त पूरी होती है।",
+          "fail_explanation_en": "IGNOAPS requires age 60 or above.",
+          "fail_explanation_hi": "आईजीएनओएपीएस के लिए आयु 60 वर्ष या अधिक होनी चाहिए।"
+        },
+        {
+          "criterion": "is_bpl",
+          "label_en": "Household below poverty line",
+          "label_hi": "परिवार गरीबी रेखा से नीचे",
+          "operator": "==",
+          "threshold": "true",
+          "pass_explanation_en": "Household is identified as BPL.",
+          "pass_explanation_hi": "परिवार बीपीएल के रूप में चिह्नित है।",
+          "fail_explanation_en": "IGNOAPS targets BPL households.",
+          "fail_explanation_hi": "आईजीएनओएपीएस बीपीएल परिवारों के लिए है।"
+        }
+      ]
+    },
+    {
+      "slug": "post-matric-scholarship-sc",
+      "name_en": "Post Matric Scholarship for SC Students",
+      "name_hi": "अनुसूचित जाति छात्रों हेतु उत्तर-मैट्रिक छात्रवृत्ति",
+      "description_en": "Scholarship for SC students enrolled in post-matriculation courses.",
+      "description_hi": "उत्तर-मैट्रिक पाठ्यक्रमों में नामांकित अनुसूचित जाति छात्रों हेतु छात्रवृत्ति।",
+      "benefits_en": "Covers compulsory fees and provides a maintenance allowance, paid via DBT.",
+      "benefits_hi": "अनिवार्य शुल्क कवर और अनुरक्षण भत्ता, डीबीटी के माध्यम से।",
+      "category_en": "Education",
+      "category_hi": "शिक्षा",
+      "state": "All India",
+      "ministry": "Ministry of Social Justice and Empowerment",
+      "official_url": "https://scholarships.gov.in",
+      "last_verified": "2026-10-23",
+      "verified": false,
+      "todo": "TODO: verify family income cap (Rs. 2.5 lakh) and maintenance allowance amounts per course group.",
+      "application_steps_en": [
+        "Apply on the National Scholarship Portal (scholarships.gov.in) during the application window.",
+        "Fill the form with seeded bank details and upload caste, income and mark documents.",
+        "The institute verifies the application; the scholarship is credited directly to the bank account."
+      ],
+      "application_steps_hi": [
+        "आवेदन विंडो के दौरान राष्ट्रीय छात्रवृत्ति पोर्टल (scholarships.gov.in) पर आवेदन करें।",
+        "सीडेड बैंक विवरण के साथ फॉर्म भरें और जाति, आय व अंक दस्तावेज अपलोड करें।",
+        "संस्थान आवेदन सत्यापित करता है; छात्रवृत्ति सीधे बैंक खाते में जमा होती है।"
+      ],
+      "documents": [
+        {
+          "name_en": "Caste certificate (SC)",
+          "name_hi": "जाति प्रमाण पत्र (अनुसूचित जाति)",
+          "instructions_en": "Issued by a competent authority.",
+          "instructions_hi": "सक्षम प्राधिकारी द्वारा जारी।"
+        },
+        {
+          "name_en": "Previous examination mark sheet",
+          "name_hi": "पिछली परीक्षा की अंक तालिका",
+          "instructions_en": "Proves post-matric enrolment eligibility.",
+          "instructions_hi": "उत्तर-मैट्रिक नामांकन पात्रता का प्रमाण।"
+        },
+        {
+          "name_en": "Income certificate",
+          "name_hi": "आय प्रमाण पत्र",
+          "instructions_en": "Family income within the prescribed ceiling.",
+          "instructions_hi": "पारिवारिक आय निर्धारित सीमा के भीतर।"
+        }
+      ],
+      "sources": [
+        { "label": "National Scholarship Portal", "url": "https://scholarships.gov.in", "last_verified": "2026-10-23", "version": "1.0" },
+        { "label": "myScheme", "url": "https://www.myscheme.gov.in", "last_verified": "2026-10-23", "version": "1.0" }
+      ],
+      "rules": [
+        {
+          "criterion": "caste_category",
+          "label_en": "Belongs to Scheduled Caste",
+          "label_hi": "अनुसूचित जाति से संबंधित",
+          "operator": "==",
+          "threshold": "SC",
+          "pass_explanation_en": "Category matches the SC scholarship target group.",
+          "pass_explanation_hi": "श्रेणी एससी छात्रवृत्ति लक्ष्य समूह से मेल खाती है।",
+          "fail_explanation_en": "This scheme is for SC students only.",
+          "fail_explanation_hi": "यह योजना केवल एससी छात्रों के लिए है।"
+        },
+        {
+          "criterion": "education_level",
+          "label_en": "Studying in a post-matric course",
+          "label_hi": "उत्तर-मैट्रिक पाठ्यक्रम में अध्ययनरत",
+          "operator": "==",
+          "threshold": "post_matric",
+          "pass_explanation_en": "Enrolled in a recognised post-matriculation course.",
+          "pass_explanation_hi": "मान्यता प्राप्त उत्तर-मैट्रिक पाठ्यक्रम में नामांकित हैं।",
+          "fail_explanation_en": "Only post-matriculation studies are covered.",
+          "fail_explanation_hi": "केवल उत्तर-मैट्रिक शिक्षा शामिल है।"
+        },
+        {
+          "criterion": "family_income",
+          "label_en": "Family income up to Rs. 2.5 lakh per year",
+          "label_hi": "पारिवारिक आय 2.5 लाख रुपये प्रति वर्ष तक",
+          "operator": "<=",
+          "threshold": "250000",
+          "pass_explanation_en": "Family income is within the prescribed ceiling.",
+          "pass_explanation_hi": "पारिवारिक आय निर्धारित सीमा के भीतर है।",
+          "fail_explanation_en": "Family income exceeds the ceiling for this scholarship.",
+          "fail_explanation_hi": "पारिवारिक आय इस छात्रवृत्ति की सीमा से अधिक है।"
+        }
+      ]
+    }
+  ]
+}
