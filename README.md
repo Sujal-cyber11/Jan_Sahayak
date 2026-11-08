@@ -15,7 +15,8 @@ backend/   FastAPI + SQLAlchemy + SQLite
 frontend/  React + TypeScript + Vite + Tailwind CSS
   src/
     api/       client.ts (typed fetch + friendly error codes)
-    components/ Wizard, Results, SchemeCard, LanguagePicker
+    components/ Wizard, Results, SchemeCard, SchemeDetails, ActionPlan,
+                MySchemes, LanguagePicker
     i18n/      en.json / hi.json translation files
 ```
 
