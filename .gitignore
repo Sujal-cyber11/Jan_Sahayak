@@ -19,3 +19,6 @@ backend/*.db
 node_modules/
 frontend/dist/
 *.tsbuildinfo
+
+# Logs
+*.log
